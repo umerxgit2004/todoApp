@@ -1,7 +1,10 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 
-const initialState = []
-
+const initialState = [{id:1,text:"Default Todo"}]
+function deleteTodo (state,action){
+    state = state.filter ( (todo) => todo. id!== action.payload)
+    return state
+}
 export const todoSlice = createSlice({
     name : 'todo',
     initialState,
@@ -12,6 +15,7 @@ export const todoSlice = createSlice({
                 text: action.payload.text 
             }
             state.push(todo)
-        }
+        },
+        removeTodo : deleteTodo
     }
 })
